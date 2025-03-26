@@ -1,0 +1,11 @@
+node_modules/
+.env
+*.txt
+*.log
+build/
+dist/
+.DS_Store
+.vscode/
+public/
+src/
+webpack.config.js
