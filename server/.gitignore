@@ -1,0 +1,15 @@
+# server/.gitignore (updated)
+/node_modules
+/.pnp
+.pnp.js
+
+/coverage
+/build
+
+.DS_Store
+.env*                  # Wildcard for ALL environment files
+!.env.example          # Optional: Keep example file
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
