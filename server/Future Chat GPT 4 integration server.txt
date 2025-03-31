@@ -1,0 +1,64 @@
+// ======================
+// INITIAL REQUIREMENTS
+// ======================
+const path = require('path');
+const fs = require('fs');
+const express = require("express");
+const cors = require("cors");
+const { OpenAI } = require("openai");
+
+// ======================
+// ENVIRONMENT SETUP
+// ======================
+const envPath = path.join(__dirname, '.env');
+
+// Emergency fallback if .env is missing
+if (!fs.existsSync(envPath)) {
+  console.error('\x1b[31m❌ ERROR: Missing .env file\x1b[0m');
+  console.log('Directory contents:', fs.readdirSync(__dirname));
+  process.exit(1);
+}
+
+// Load environment
+require('dotenv').config({ path: envPath });
+
+// Validate API Key
+if (!process.env.OPENAI_API_KEY) {
+  console.error('\x1b[31m❌ ERROR: OPENAI_API_KEY missing in .env\x1b[0m');
+  process.exit(1);
+}
+
+// ======================
+// SERVER SETUP
+// ======================
+const app = express();
+const port = process.env.PORT || 5000;
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY.trim()
+});
+
+app.use(cors());
+app.use(express.json());
+
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { message } = req.body;
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: [{ role: "user", content: message }],
+    });
+    res.json({ reply: completion.choices[0].message.content });
+  } catch (error) {
+    console.error("\x1b[31mOpenAI Error:\x1b[0m", error);
+    res.status(500).json({ 
+      error: "Failed to fetch AI response",
+      details: error.message 
+    });
+  }
+});
+
+app.listen(port, () => {
+  console.log('\x1b[32m✓ Server running on\x1b[0m', `http://localhost:${port}`);
+  console.log('\x1b[33mTest endpoint:\x1b[0m', `POST http://localhost:${port}/api/chat`);
+});
