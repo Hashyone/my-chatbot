@@ -60,40 +60,53 @@ function App() {
       name: "RB 1",
       description: "Premium grade coal with high calorific value and low ash content.",
       specs: [
-        "Calorific Value: 6,000 kcal/kg NCV",
-        "Ash: 15% Max",
-        "Sulfur: 0.5% Max",
-        "Volatile Matter: 35% Min",
-        "Fixed Carbon: 45% Min"
+        "Calorific Value (Net Calorific Value, NCV): 6,000 kcal/kg (Minimum 5,850 kcal/kg)",
+        "Total Moisture (As Received Basis, ARB): 12.0% max",
+        "Volatile Matter (ARB): 22.0% min",
+        "Ash Content (ARB): 15.0% max",
+        "Sulphur Content (ARB): 1.0% max",
+        "Hardgrove Grindability Index (HGI): 45-70",
+        "Nominal Topsize: 50 mm",
+        "Initial Deformation Temperature (IDT) in a reducing atmosphere: Min 1,250 °C",
+        "Calcium Oxide in Ash (dry basis, DB): 12.0% max"
       ],
     },
+    
     {
       name: "RB 2",
       description: "Mid-tier coal suitable for industrial applications.",
       specs: [
-        "Calorific Value: 5,800 kcal/kg NCV",
-        "Ash: 17% Max",
-        "Sulfur: 0.7% Max",
-        "Volatile Matter: 32% Min",
-        "Fixed Carbon: 46% Min"
+        "Calorific Value (Net Calorific Value, NCV): 6,000 kcal/kg (Minimum 5,700 kcal/kg)",
+        "Total Moisture (As Received Basis, ARB): 13.0% max",
+        "Volatile Matter (ARB): 21.0% min",
+        "Ash Content (ARB): 17.0% max",
+        "Sulphur Content (ARB): 1.0% max",
+        "Hardgrove Grindability Index (HGI): 45-70",
+        "Nominal Topsize: 50 mm",
+        "Initial Deformation Temperature (IDT) in a reducing atmosphere: Min 1,250 °C"
       ],
     },
+
     {
       name: "RB 3",
       description: "Cost-effective option with good energy performance.",
       specs: [
-        "Calorific Value: 5,500 kcal/kg NCV",
-        "Ash: 19% Max",
-        "Sulfur: 0.9% Max",
-        "Volatile Matter: 30% Min",
-        "Fixed Carbon: 50% Min"
+        "Calorific Value (Net Calorific Value, NCV): 5,500 kcal/kg (Minimum 5,300 kcal/kg)",
+        "Total Moisture (As Received Basis, ARB): 14.0% Max",
+        "Volatile Matter (ARB): 20.0% Min",
+        "Ash Content (ARB): 23.0% Max",
+        "Sulphur Content (ARB): 1.0% Max",
+        "Hardgrove Grindability Index (HGI): 45-70",
+        "Nominal Topsize: 50 mm",
+        "Initial Deformation Temperature (IDT) in a reducing atmosphere: Min 1,150 °C"
       ],
     },
+
   ];
 
   const services = [
     {
-      name: "Washed RB1, RB2 & RB3 Coal Supply",
+      name: "RB1, RB2 & RB3 Coal Supply",
       description: "Sourcing and supplying high-quality coal with strict specifications.",
     },
     {
@@ -110,7 +123,7 @@ function App() {
     },
     {
       name: "Port Services",
-      description: "Managing cargo receiving, verification, stockpile handling, security, forwarding and clearing, terminal handling, and vessel loading.",
+      description: "Managing cargo receiving, verification, stockpile handling, 24/7 security, forwarding and clearing, terminal handling, and vessel loading.",
     },
   ];
 
@@ -656,7 +669,7 @@ const handleChatSubmit = async (e) => {
           <TextField
             fullWidth
             variant="outlined"
-            placeholder="Type your question about our coal products..."
+            placeholder="Type your question"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             disabled={isLoading}
@@ -701,7 +714,7 @@ const handleChatSubmit = async (e) => {
                 </ListItem>
                 <ListItem>
                   <PhoneIcon sx={{ mr: 1 }} />
-                  <Typography>+27 84 871 1957</Typography>
+                  <Typography>+27 75 444 6273</Typography>
                 </ListItem>
                 <ListItem>
                   <LocationOnIcon sx={{ mr: 1 }} />
